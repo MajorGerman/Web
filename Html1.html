@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Супер-Сайт Георга Лаабе </title>
+</head>
+
+<body align="center">
+
+	<style>
+		#plan-text  {
+
+			color: #4F2C37;
+
+		}
+
+		body {
+
+			font-family: Verdana;
+		}
+
+	</style>
+
+	<h1> Супер сайт Георг Лаабе</h1>
+
+	<details>
+		<summary> Возможности нашего сайта </summary>
+		<h4 id="plan-text"> - Купить Машину </h4>
+		<h4 id="plan-text"> - Написать плохой код </h4>
+		<h4 id="plan-text"> - Съесть персики </h4>
+		<h4 id="plan-text"> - Поиграть в Тсоу </h4>
+	</details>
+
+    <br>
+    <h2> Подтверждение доступа </h2>
+    <h4> Чтобы пользоваться нашим супер-сайтом, необходимо быть совершеннолетним</h4>
+
+	<input class="textarea" id="numb1" type="number" placeholder=" Введите ваш возраст ">
+	<input type="button" value=" Подтвердить " onclick="alerto()">
+
+	<script>
+
+		function alerto() {
+
+			var num = document.getElementById("numb1").value
+			if (num < 0) {
+  				alert(" Нельзя вводить отрицательные числа! ");
+			} else if (num < 18) {
+				alert(" Вам нет 18! Доступ запрещен! ")
+			} else if (num > 150 ) {
+				alert(" Вам слишком много лет ")
+			} else {
+				alert(" Поздравляю! Проходите! ")
+			}
+
+		}
+
+		while (True) {
+  			
+
+
+		}
+
+	</script>
+
+
+
+</body>
+
+</html>
