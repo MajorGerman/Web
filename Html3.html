@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Супер-Сайт Георга Лаабе </title>
+</head>
+
+<body align="center">
+
+	<style>
+
+		body {
+
+			font-family: Verdana;
+			color: white;
+			background-image: url(Malachite.jpg);
+			background-size:2400px;
+			text-shadow: 
+			-0   -1px 6px #000000,
+			 0   -1px 6px #000000,
+			-0    1px 6px #000000,
+			 0    1px 6px #000000,
+			-1px -0   6px #000000,
+		 	 1px -0   6px #000000,
+			-1px  0   6px #000000,
+		     1px  0   6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000;
+		}
+
+		#pagechange {
+
+			text-align: left;
+			color: #FFFFFF;
+
+		}
+
+		#pagechange2 {
+
+			text-align: right;
+			color: #FFFFFF;
+		}
+
+	</style>
+	
+	<a><h3 id="pagechange" onclick="alerto()" title="Именем Иосифа Виссарионовича Сталина указом №227 кнопка 'назад' недоступна"> Вернуться назад </h3></a>
+	<h1> Супер сайт Георга Лаабе</h1>
+
+	<h2> [Дата и время] </h2>
+
+	<time id="date"></time>
+	<br><br>
+
+	<h2> Узнаем вас получше! </h2>
+
+	<h3> Имя </h3><input type="text" id="name" placeholder="Например, Владимир">
+	<br><br>
+
+	<h3> Фамилия </h3><input type="text" id="surname" placeholder="Например, Ульянов">
+	<br><br>
+
+	<h3> Пол / Гендер </h3>
+
+	<select>
+		<option> Мужской </option>
+		<option> Женский </option>
+		<option> Lesbian</option>
+		<option> Gay</option>
+		<option> Bisexual</option>
+		<option> Transgender</option>
+		<option> Queer</option>
+		<option> Asexual</option>
+		<option> Pansexual</option>
+		<option> Polisexual</option>
+		<option> Agender</option>
+		<option> Demiboy</option>
+		<option> Demigirl</option>
+		<option> Questioning </option>
+		<option> Intersexual </option>
+		<option> Ttwo-spirit </option>
+		<option> Allies </option>
+		<option> Have no genitalies, but indicate myself as female </option>
+		<option> Have no genitalies, but indicate myself as male </option>
+		<option> Have no genitalies and proud of it </option>
+		<option> Allies </option>
+		<option> Androgyne </option>
+		<option> Androgynous </option>
+		<option> FTM </option>
+		<option> MTF </option>
+		<option> Bigender </option>
+		<option> Genderfluid </option>
+	    <option> Genderfluid Helisexual </option>
+		<option> Gender Nonconforming </option>
+		<option> Pedophile </option>
+		<option> Gender Variant </option>
+		<option> Genderfluid Helisexual </option>
+		<option> Neither </option>
+		<option> Non-binary </option>
+		<option> Pangender </option>
+		<option> Anongender </option>
+		<option> Cavusgender </option>
+		<option> Zodiacgender </option>
+		<option> Aesthetgender </option>
+		<option> Affectugender </option>
+		<option> Digigender </option>
+		<option> Egogender </option>
+		<option> Lolycon Lover </option>
+		<option> Trans Male </option>
+		<option> Trans Female </option>
+		<option> Trans Person </option>
+		<option> Attack Helicopter </option>
+		<option> Programmer </option>
+		<option> Software Developer </option>
+		<option> Software Engineer </option>
+		<option> Other </option>
+	</select>
+	<br><br><br>
+
+	<input type="checkbox"> Есть инвалидность
+	<br><br>
+	<input type="checkbox"> Люблю пиццу с ананасами
+	<br><br><br>
+	<input type="submit" value=" Отправить " onclick="sumb()">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<a href="Html4.html"><h3 id="pagechange2"> Перейти дальше </h3></a>
+
+	<script>
+
+		var interv = setInterval(Date1, 100);
+
+		function Date1() {
+			var today = new Date();
+			document.getElementById("date").innerHTML = today;	
+		}
+
+		function alerto() {
+
+			alert("Вас вызвали к стенке!");
+
+		}
+
+		function sumb() {
+
+			x = document.getElementById("name").value;
+			y = document.getElementById("surname").value;
+
+			if ((x == "") || (y == "")) {
+				alert("Вы не заполнили поля!");
+			} else {
+				alert("Спасибо!");
+			}
+
+		}
+
+	</script>
+
+</body>
+
+</html>
