@@ -77,7 +77,7 @@
 
 	<h2> Теперь вы можете посмотреть видео! </h2>
 
-	<video onclick="playVideo()" controls="controls">
+	<video controls>
 
 		<source src="LastChristmas.mp4">
 
@@ -101,11 +101,6 @@
 
 
 	<script>
-
-		function playVideo() {
-		var video = document.getElementById("vid1");
-		video.play();
-		}
 
 		function playAudio() {
 		var audio = document.getElementsByTagName("audio")[0];

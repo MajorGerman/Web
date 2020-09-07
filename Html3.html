@@ -129,7 +129,17 @@
 	<br><br><br>
 	<input type="submit" value=" Отправить " onclick="sumb()">
 
-	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br>
+
+	<h3> Помимо заполнения полей, можно посмотреть видео, просто наведя на него курсор! </h3>
+
+	<video id="video">
+
+		<source src="Stayin Alive.mp4">
+
+	</video>
+
+	<br><br><br>
 	<a href="Html4.html"><h3 id="pagechange2"> Перейти дальше </h3></a>
 
 	<script>
@@ -157,8 +167,22 @@
 			} else {
 				alert("Спасибо!");
 			}
+		}
+
+		window.onload = function() {
+
+		var video = document.getElementById("video");
+
+		video.onmouseover = function () {
+			this.play();
+		}
+		video.onmouseout = function () {
+			this.pause();
+		}
 
 		}
+
+		
 
 	</script>
 
