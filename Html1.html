@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title> Супер-Сайт Георга Лаабе </title>
+	<title> Супер-Сайт <mark> Георга Лаабе </mark> </title>
 </head>
 
 <body align="center">
@@ -21,16 +21,35 @@
 
 		}
 
+		#list {
+
+			list-style-type: square;
+			grid-auto-rows: auto;
+			grid-auto-columns: auto;
+			margin: auto;
+
+		}
+
 	</style>
 
-	<h1> Супер сайт Георг Лаабе</h1>
+	<h1> Супер сайт Георга Лаабе</h1>
 
 	<details>
 		<summary> Возможности нашего сайта </summary>
 		<h4 id="plan-text"> - Купить Машину </h4>
 		<h4 id="plan-text"> - Написать плохой код </h4>
 		<h4 id="plan-text"> - Съесть персики </h4>
-		<h4 id="plan-text"> - Поиграть в Тсоу </h4>
+		<h4 id="plan-text"> - Поиграть в <abbr title="The Story of Uniarka"> TSOU </abbr> </h4>
+		<table width="34%" border="2" bgcolor="cyan" align="center">
+			<tr>
+    			<th>
+    				<ol id="list">
+						<li>Нам доверяют известные компании вроде Microsoft и Apple!</li>
+					</ol>
+				</th>
+   			</tr>
+		</table>
+
 	</details>
 
     <br>
@@ -39,6 +58,9 @@
 
 	<input class="textarea" id="numb1" type="number" placeholder=" Введите ваш возраст ">
 	<input type="button" value=" Подтвердить " onclick="alerto()">
+
+	<br><br><br><br>
+	<h5 hidden="hidden">Чтобы пользоваться нашим супер-сайтом, необходимо быть совершеннолетним</h5>
 
 	<script>
 
