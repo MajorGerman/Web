@@ -29,6 +29,10 @@
 
 	<body>
 
+		<audio id="deadsound"> 
+			<source src="MamkaSgorela.wav">
+		</audio>
+
 		<canvas id="canvas" width="1920" height="1080"> </canvas>
 
 		<script type="text/javascript">
@@ -42,8 +46,9 @@
 			const paddleHeight = grid * 13;
 
 			var paddleSpeed = 13;
-			var ballSpeed = 7;
+			var ballSpeed = 9;
 			var tped = 0;
+			var cellsAmount = 13;
 
 			const maxdownx = canvas.width - grid - paddleHeight;
 /*
@@ -83,7 +88,26 @@
 					ctx.fillRect(this.x, this.y,this.width,this.height);
 				} 
 
-			} 
+			}
+
+			class cell {
+				constructor(x,y,dx,dy) {
+
+					this.dx = dx;
+					this.dy = dy;
+					this.speed = 0;
+					this.x = x;
+					this.y = y;
+					this.width = 15;
+					this.height =  15;
+
+				}
+				draw(){
+					ctx.fillRect(this.x, this.y,this.width,this.height);
+				}
+			}
+
+
 			const ball = {
 
 				x: canvas.width / 2,
@@ -99,17 +123,6 @@
 
 			};
 
-			const down = {
-
-				y: canvas.height - grid * 3,
-				x: canvas.width / 2 - paddleWidth / 2,
-				width: paddleHeight,
-				height: grid,
-
-				dx: 0
-
-			};
-
 			function collides(obj1, obj2) {
 
 				return obj1.x < obj2.x + obj2.width &&
@@ -118,15 +131,21 @@
 					obj1.y + obj1.height > obj2.y;
 
 			}
-			var a = new up(100,100);
-			var ups = []
-			//var main_factory = new up_factory();
-			//up_factory.fabricate();
+			var ups = [];
+			var paddle = [];
+			var dead = document.getElementById("deadsound");
+
+			
+
 			function start(){
 				ups = [];
+				paddle = [];
+
 				ball.x = canvas.width / 2;
 				ball.y = canvas.height / 2;
 				ball.dy = -ballSpeed;
+
+				//down.x = canvas.width / 2 - paddleWidth / 2;
 
 				seconds = -1;
 
@@ -135,7 +154,12 @@
 						ups.push(new up(j*130, i*30 + 60));
 					}
 				}
+				for (i = 0; i < 13; i++){
+				paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3,(ballSpeed*Math.sin(30+(120/cellsAmount)*i)),(ballSpeed*Math.cos(30+(120/cellsAmount)*i))));
+				}
+
 			} 
+				start();
 
 			function loop() {
 
@@ -143,25 +167,46 @@
 				requestAnimationFrame(loop);
 				ctx.clearRect(0,0,canvas.width,canvas.height);
 
-				down.x += down.dx;
-
-				if (down.x < grid) {
-
-					down.x = grid;
-
-				} else if (down.x > canvas.width - down.width){
-
-					down.x = maxdownx;
-
+				//down.x += down.dx;
+				for (i = 0; i < cellsAmount; i++){
+					paddle[i].x += paddle[i].speed;
 				}
 
+				for (i = 0; i < cellsAmount; i++){
+					if (paddle[i].x < grid){
+						for (j = 0; j < cellsAmount; j++){
+						paddle[j].x = grid*j +15;
+						}
+					}
+				}
+				for (i = 0; i < cellsAmount; i++){
+					if (paddle[i].x > canvas.width - paddle[i].width){
+						for (j = 0; j < cellsAmount; j++){
+							paddle[j].x = maxdownx - ((cellsAmount-j) * grid) + grid * cellsAmount + grid;
+						}
+					}
+				}
+
+			//	if (down.x < grid) {
+
+				//	down.x = grid;
+
+				//} else if (down.x > canvas.width - down.width){
+
+				//	down.x = maxdownx;
+
+				//}
+
 				ctx.fillStyle = "white";
-				ctx.fillRect(down.x,down.y,down.width,down.height);
+				//ctx.fillRect(down.x,down.y,down.width,down.height);
 				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
 				ctx.fillText(seconds + " сек", 10, 25);
 				for (i=0;i < ups.length;i++){
 
 					ups[i].draw();
+				}
+				for (i = 0; i < cellsAmount; i++){
+					ctx.fillRect(paddle[i].x,paddle[i].y,paddle[i].width,paddle[i].height);
 				}
 
 
@@ -184,9 +229,11 @@
 					ball.dx *= -1;
 				}
 
-				if (ball.y > canvas.width) {
+				if (ball.y > canvas.height + 15) {
 
-					alert("u vas mat' sgorela");
+					
+					dead.play();
+					alert("u vas mat' sgorela" + paddle[3].y);
 					start();
 				}
 				if (ups.length === tped){
@@ -194,11 +241,20 @@
 					start();
 				}
 
-				if (collides(ball, down)) {
+				/*if (collides(ball, down)) {
 
 					ball.dy *= -1;
 					ball.y = down.y + down.height -40;
+				}*/
+				for (i = 0; i < cellsAmount; i++){
+					if (collides(ball, paddle[i])){
+						ball.dy = paddle[i].dy;
+						ball.y -=10;
+						ball.dx = paddle[i].dx;
+					}
 				}
+
+
 				for (i=0;i < ups.length;i++){
 
 					if (collides(ball, ups[i])) {
@@ -219,19 +275,24 @@
 				seconds++;
 				ctx.font = "35px Arial";
 				ctx.fillStyle = "white";
-				ctx.fillText("dfsdffdsdfs", 22, 22);
 			}
 
-				document.addEventListener('keydown', buttonpress);
+			document.addEventListener('keydown', buttonpress);
 
 				function buttonpress(e) {
 					if (e.which === 37) {
 
-						down.dx = -paddleSpeed;
+						//down.dx = -paddleSpeed;
+					for (i = 0; i < cellsAmount; i++){
+						paddle[i].speed = -paddleSpeed;
+					}
 
 					} else if (e.which === 39) {
 
-						down.dx = paddleSpeed;
+						//down.dx = paddleSpeed;
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = paddleSpeed;
+						}
 
 					}
 				}
@@ -242,7 +303,9 @@
 
 					if (e.which === 37 || e.which === 39) {
 
-						down.dx = 0;
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = 0;
+						}
 					}
 
 				}
