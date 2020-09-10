@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<title> Game </title>
+                
+                <style>
+
+			html, body {
+
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+
+				background: black;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<canvas id="canvas" width="1920" height="1080"> </canvas>
+
+		<script type="text/javascript">
+			
+			const canvas = document.getElementById("canvas");
+			const ctx = canvas.getContext("2d");
+
+			const grid = 15;
+			const paddleWidth = grid * 10;
+
+			const paddleHeight = grid * 8;
+
+			var paddleSpeed = 10;
+			var ballSpeed = 7;
+			var tped = 0;
+
+			const maxdownx = canvas.width - grid - paddleHeight;
+/*
+			class up_factory(){
+				fabricate(){
+					this.x = 0;
+					this.ups = [];
+					for(let i = 0; i < 4; i++) {
+						for (let j = 0; j < 10; j++){
+							ups.push(new up(j*110,i*25));
+							x++;
+						}
+						
+					}
+
+				}
+				collideses(obj){
+					for(i = 0 ; i < x; i++){
+						if (collides(obj, this.ups[i])){
+							return this.ups[i];
+							this.x-=1;
+						}
+					}
+				}
+			}
+*/
+			class up {
+				constructor(x,y) {
+
+					this.x = x;
+					this.y = y;
+					this.width = 100;
+					this.height = 20;
+
+				}
+				draw(){
+					ctx.fillRect(this.x, this.y,this.width,this.height);
+				} 
+
+			} 
+			const ball = {
+
+				x: canvas.width / 2,
+				y: canvas.height / 2,
+
+				width: grid,
+				height: grid,
+
+				resetting: false,
+
+				dx: ballSpeed,
+				dy: -ballSpeed
+
+			};
+
+			const down = {
+
+				y: canvas.height - grid * 3,
+				x: canvas.width / 2 - paddleWidth / 2,
+				width: paddleHeight,
+				height: grid,
+
+				dx: 0
+
+			};
+
+			function collides(obj1, obj2) {
+
+				return obj1.x < obj2.x + obj2.width &&
+					obj1.x + obj1.width > obj2.x &&
+					obj1.y < obj2.y + obj2.height &&
+					obj1.y + obj1.height > obj2.y;
+
+			}
+			var a = new up(100,100);
+			var ups = []
+			//var main_factory = new up_factory();
+			//up_factory.fabricate();
+			function start(){
+				ball.x = canvas.width / 2
+				ball.y = canvas.height / 2
+				ball.dy = -ballSpeed
+
+				for (i = 0; i < 10; i++){
+					for (j = 0; j < 10; j++){
+						ups.push(new up(j*120, i*25))
+					}
+				}
+			} 
+
+
+
+			function loop() {
+
+
+				requestAnimationFrame(loop);
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+
+				down.x += down.dx;
+
+				if (down.x < grid) {
+
+					down.x = grid;
+
+				} else if (down.x > canvas.width - down.width){
+
+					down.x = maxdownx;
+
+				}
+
+				ctx.fillStyle = "white";
+				ctx.fillRect(down.x,down.y,down.width,down.height);
+				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
+				for (i=0;i < ups.length;i++){
+
+					ups[i].draw();
+				}
+
+
+				ball.x += ball.dx;
+				ball.y += ball.dy;
+
+				if (ball.y < grid) {
+
+					ball.y = grid;
+					ball.dy *= -1;
+
+				} else if (ball.x < grid) {
+
+					ball.x = grid;
+					ball.dx *= -1;
+
+				} else if (ball.x + grid > canvas.width - grid) {
+
+					ball.x = canvas.width - grid * 2;
+					ball.dx *= -1;
+				}
+
+				if (ball.y > canvas.width) {
+
+					alert("u vas mat' sgorela");
+					start();
+				}
+				if (ups.length === tped){
+					alert("u vas mat' potushili");
+					start();
+				}
+
+				if (collides(ball, down)) {
+
+					ball.dy *= -1;
+					ball.y = down.y + down.height -40;
+				}
+				for (i=0;i < ups.length;i++){
+
+					if (collides(ball, ups[i])) {
+
+						ball.dy *= -1;
+						ball.y = ups[i].y + ups[i].height;
+						ups[i].x +=10000;
+						tped++;
+				}
+			}
+
+
+
+				
+			}
+
+				document.addEventListener('keydown', buttonpress);
+
+				function buttonpress(e) {
+					if (e.which === 37) {
+
+						down.dx = -paddleSpeed;
+
+					} else if (e.which === 39) {
+
+						down.dx = paddleSpeed;
+
+					}
+				}
+
+				document.addEventListener('keyup', buttonunpress);
+
+				function buttonunpress(e) {
+
+					if (e.which === 37 || e.which === 39) {
+
+						down.dx = 0;
+					}
+
+				}
+
+			requestAnimationFrame(loop);
+
+		</script>
+
+	</body>
+
+</html>
