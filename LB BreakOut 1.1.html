@@ -39,9 +39,9 @@
 			const grid = 15;
 			const paddleWidth = grid * 10;
 
-			const paddleHeight = grid * 8;
+			const paddleHeight = grid * 13;
 
-			var paddleSpeed = 10;
+			var paddleSpeed = 13;
 			var ballSpeed = 7;
 			var tped = 0;
 
@@ -123,18 +123,19 @@
 			//var main_factory = new up_factory();
 			//up_factory.fabricate();
 			function start(){
-				ball.x = canvas.width / 2
-				ball.y = canvas.height / 2
-				ball.dy = -ballSpeed
+				ups = [];
+				ball.x = canvas.width / 2;
+				ball.y = canvas.height / 2;
+				ball.dy = -ballSpeed;
+
+				seconds = -1;
 
 				for (i = 0; i < 10; i++){
-					for (j = 0; j < 10; j++){
-						ups.push(new up(j*120, i*25))
+					for (j = 0; j < 14; j++){
+						ups.push(new up(j*130, i*30 + 60));
 					}
 				}
 			} 
-
-
 
 			function loop() {
 
@@ -157,6 +158,7 @@
 				ctx.fillStyle = "white";
 				ctx.fillRect(down.x,down.y,down.width,down.height);
 				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
+				ctx.fillText(seconds + " сек", 10, 25);
 				for (i=0;i < ups.length;i++){
 
 					ups[i].draw();
@@ -205,12 +207,19 @@
 						ball.y = ups[i].y + ups[i].height;
 						ups[i].x +=10000;
 						tped++;
-				}
+					}
+				}	
 			}
 
+			var count = setInterval(counter, 1000);
+			var seconds = 0;
 
+			function counter() {
 
-				
+				seconds++;
+				ctx.font = "35px Arial";
+				ctx.fillStyle = "white";
+				ctx.fillText("dfsdffdsdfs", 22, 22);
 			}
 
 				document.addEventListener('keydown', buttonpress);
