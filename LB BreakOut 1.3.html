@@ -23,17 +23,53 @@
 
 			}
 
+			h1 {
+
+				color: #FFFFFF;
+				font-family: arial;
+				text-align: center;
+			}
+
 		</style>
 
 	</head>
 
 	<body>
 
-		<audio id="deadsound"> 
-			<source src="MamkaSgorela.wav">
+		<table>
+			
+			<tr>
+				<th>
+					
+					<h1> Laabe-Buslaev BreakOut 1.3 </h1>
+
+				</th>
+
+			</tr>
+
+			<tr>
+				<th>
+
+					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF;"> </canvas>
+					
+				</th>
+
+			</tr>
+		</table>
+
+		<audio id="dead"> 
+			<source src="MamkaSgorela.mp3">
 		</audio>
 
-		<canvas id="canvas" width="1920" height="1080"> </canvas>
+		<audio id="win"> 
+			<source src="Win.mp3">
+		</audio>
+
+		<audio id="boom"> 
+			<source src="boom.mp3">
+		</audio>
+
+		<img id="img1" src="MotherBurnt.png" hidden="hidden">
 
 		<script type="text/javascript">
 			
@@ -41,40 +77,14 @@
 			const ctx = canvas.getContext("2d");
 
 			const grid = 15;
-			const paddleWidth = grid * 10;
-
-			const paddleHeight = grid * 13;
 
 			var paddleSpeed = 13;
-			var ballSpeed = 9;
+			var ballSpeed = 8;
 			var tped = 0;
-			var cellsAmount = 13;
+			var cellsAmount = 21;
 
-			const maxdownx = canvas.width - grid - paddleHeight;
-/*
-			class up_factory(){
-				fabricate(){
-					this.x = 0;
-					this.ups = [];
-					for(let i = 0; i < 4; i++) {
-						for (let j = 0; j < 10; j++){
-							ups.push(new up(j*110,i*25));
-							x++;
-						}
-						
-					}
+			const maxdownx = canvas.width - cellsAmount*grid;
 
-				}
-				collideses(obj){
-					for(i = 0 ; i < x; i++){
-						if (collides(obj, this.ups[i])){
-							return this.ups[i];
-							this.x-=1;
-						}
-					}
-				}
-			}
-*/
 			class up {
 				constructor(x,y) {
 
@@ -107,7 +117,6 @@
 				}
 			}
 
-
 			const ball = {
 
 				x: canvas.width / 2,
@@ -133,9 +142,12 @@
 			}
 			var ups = [];
 			var paddle = [];
-			var dead = document.getElementById("deadsound");
 
-			
+			var dead = document.getElementById("dead");
+			var win = document.getElementById("win");
+			var boom = document.getElementById("boom");
+
+			var img1 = document.getElementById("img1");
 
 			function start(){
 				ups = [];
@@ -144,30 +156,31 @@
 				ball.x = canvas.width / 2;
 				ball.y = canvas.height / 2;
 				ball.dy = -ballSpeed;
-
-				//down.x = canvas.width / 2 - paddleWidth / 2;
+				tped = 0;
 
 				seconds = -1;
 
-				for (i = 0; i < 10; i++){
+				for (i = 0; i < 8; i++){
 					for (j = 0; j < 14; j++){
-						ups.push(new up(j*130, i*30 + 60));
+						ups.push(new up(j*130+60, i*30 + 65));
 					}
 				}
-				for (i = 0; i < 13; i++){
-				paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3,(ballSpeed*Math.sin(30+(120/cellsAmount)*i)),(ballSpeed*Math.cos(30+(120/cellsAmount)*i))));
+				for (i = 0; i < cellsAmount; i++){
+				paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3,(ballSpeed*Math.cos(45+(100/cellsAmount)*i)),-Math.abs((ballSpeed*Math.sin(45+(100/cellsAmount)*i)))));
 				}
 
 			} 
 				start();
 
-			function loop() {
+			function sleep(ms) {
+  				return new Promise(resolve => setTimeout(resolve, ms));
+			}
 
+			function loop() {
 
 				requestAnimationFrame(loop);
 				ctx.clearRect(0,0,canvas.width,canvas.height);
 
-				//down.x += down.dx;
 				for (i = 0; i < cellsAmount; i++){
 					paddle[i].x += paddle[i].speed;
 				}
@@ -175,32 +188,25 @@
 				for (i = 0; i < cellsAmount; i++){
 					if (paddle[i].x < grid){
 						for (j = 0; j < cellsAmount; j++){
-						paddle[j].x = grid*j +15;
+						paddle[j].x = grid*j + 2;
 						}
 					}
 				}
-				for (i = 0; i < cellsAmount; i++){
-					if (paddle[i].x > canvas.width - paddle[i].width){
-						for (j = 0; j < cellsAmount; j++){
-							paddle[j].x = maxdownx - ((cellsAmount-j) * grid) + grid * cellsAmount + grid;
-						}
+				if (paddle[cellsAmount-1].x > canvas.width - paddle[cellsAmount-1].width){
+					for (j = 0; j < cellsAmount; j++){
+						paddle[j].x = maxdownx - ((cellsAmount-j) * grid) + cellsAmount * grid;
+						
 					}
 				}
 
-			//	if (down.x < grid) {
 
-				//	down.x = grid;
-
-				//} else if (down.x > canvas.width - down.width){
-
-				//	down.x = maxdownx;
-
-				//}
 
 				ctx.fillStyle = "white";
-				//ctx.fillRect(down.x,down.y,down.width,down.height);
 				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
-				ctx.fillText(seconds + " сек", 10, 25);
+
+				ctx.font = "35px Arial";
+				ctx.fillText(seconds + " сек", 10, 30);
+
 				for (i=0;i < ups.length;i++){
 
 					ups[i].draw();
@@ -231,29 +237,31 @@
 
 				if (ball.y > canvas.height + 15) {
 
-					
+					ctx.drawImage(img1, 10, 10);
 					dead.play();
-					alert("u vas mat' sgorela" + paddle[3].y);
+					alert("u vas mat' sgorela");
 					start();
+
 				}
 				if (ups.length === tped){
+					win.play();
 					alert("u vas mat' potushili");
 					start();
 				}
 
-				/*if (collides(ball, down)) {
-
-					ball.dy *= -1;
-					ball.y = down.y + down.height -40;
-				}*/
 				for (i = 0; i < cellsAmount; i++){
 					if (collides(ball, paddle[i])){
 						ball.dy = paddle[i].dy;
-						ball.y -=10;
+						ball.y -=40;
 						ball.dx = paddle[i].dx;
+						if (ball.dy > -1) {
+							ball.dy = -2;
+
+						}
+
+						break;
 					}
 				}
-
 
 				for (i=0;i < ups.length;i++){
 
@@ -263,6 +271,7 @@
 						ball.y = ups[i].y + ups[i].height;
 						ups[i].x +=10000;
 						tped++;
+						boom.play();
 					}
 				}	
 			}
@@ -273,7 +282,6 @@
 			function counter() {
 
 				seconds++;
-				ctx.font = "35px Arial";
 				ctx.fillStyle = "white";
 			}
 
