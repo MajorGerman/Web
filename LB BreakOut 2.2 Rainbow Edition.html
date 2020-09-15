@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<title> Game </title>
+                
+                <style>
+
+			html, body {
+
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+
+				background: black;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+			}
+
+			h1 {
+
+				color: #FFFFFF;
+				font-family: arial;
+				text-align: center;
+			}
+
+		</style>
+
+	</head>
+
+	<body id="body">
+
+		<table>
+			
+			<tr>
+				<th>
+					
+					<h1 id="h1"> Laabe-Buslaev BreakOut 2.2 Rainbow Edition </h1>
+
+				</th>
+
+			</tr>
+
+			<tr>
+				<th>
+
+					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF"> </canvas>
+					
+				</th>
+
+			</tr>
+		</table>
+
+		<audio id="dead"> 
+			<source src="MamkaSgorela.mp3">
+		</audio>
+
+		<audio id="win"> 
+			<source src="Win.mp3">
+		</audio>
+
+		<audio id="boom"> 
+			<source src="boom.mp3">
+		</audio>
+
+		<img id="img1" src="MotherBurnt.png" hidden="hidden">
+
+		<script type="text/javascript">
+			
+			const canvas = document.getElementById("canvas");
+			const ctx = canvas.getContext("2d");
+
+			const grid = 15;
+
+			var paddleSpeed = 13;
+			var ballSpeed = 8;
+			var tped = 0;
+			var cellsAmount = 21;
+
+			var rainbow = document.getElementById("rainbow");
+
+			const maxdownx = canvas.width - cellsAmount*grid;
+
+			class up {
+				constructor(x,y) {
+
+					this.x = x;
+					this.y = y;
+					this.width = 100;
+					this.height = 20;
+
+				}
+				draw(){
+					ctx.fillStyle = (Color);
+					ctx.fillRect(this.x, this.y,this.width,this.height);
+				} 
+
+			}
+
+			class cell {
+				constructor(x,y,dx,dy) {
+
+					this.dx = dx;
+					this.dy = dy;
+					this.speed = 0;
+					this.x = x;
+					this.y = y;
+					this.width = 15;
+					this.height =  15;
+
+				}
+				draw(){
+					ctx.fillStyle = (Color);
+					ctx.fillRect(this.x, this.y,this.width,this.height);
+				}
+			}
+
+			const ball = {
+
+				x: canvas.width / 2,
+				y: canvas.height / 2,
+
+				width: grid,
+				height: grid,
+
+				resetting: false,
+
+				dx: ballSpeed,
+				dy: -ballSpeed
+
+			};
+
+			function collides(obj1, obj2) {
+
+				return obj1.x < obj2.x + obj2.width &&
+					obj1.x + obj1.width > obj2.x &&
+					obj1.y < obj2.y + obj2.height &&
+					obj1.y + obj1.height > obj2.y;
+
+			}
+			var ups = [];
+			var paddle = [];
+
+			var dead = document.getElementById("dead");
+			var win = document.getElementById("win");
+			var boom = document.getElementById("boom");
+
+			var img1 = document.getElementById("img1");
+
+			var relpos = 0;
+
+			var Red = 255;
+			var Green = 0;
+			var Blue = 0;
+
+			var HRed = 0;
+			var HGreen = 0;
+			var HBlue = 0;
+
+			var Color = "";
+
+			function start(){
+				ups = [];
+				paddle = [];
+
+				ball.x = canvas.width / 2;
+				ball.y = canvas.height / 2;
+				ball.dy = -ballSpeed;
+				tped = 0;
+
+				seconds = -1;
+
+				for (i = 0; i < 8; i++){
+					for (j = 0; j < 14; j++){
+						ups.push(new up(j*130+60, i*30 + 65));
+					}
+				}
+				for (i = 0; i < cellsAmount; i++){
+					relpos = (i / cellsAmount) * 16 + 2;
+					paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3 , (relpos - 10), (-1*Math.abs(relpos-10)+10)));
+				}
+
+			} 
+				start();
+
+			function sleep(ms) {
+  				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			function beepboop(a = ""){
+				alert("beepboop"+ a);
+			}
+
+			h1 = document.getElementById("h1");
+			body = document.getElementById("body");
+
+			function ChangeColor() {
+					if (Red == 255 && Blue == 0) {
+						Green ++;
+					}
+					if (Green == 255 && Blue == 0) {
+						Red -= 1;
+					}
+					if (Red == 0 && Green == 255) {
+						Blue ++;
+					}
+					if (Red == 0 && Blue == 255) {
+						Green -= 1;
+					}
+					if (Blue == 255 && Green == 0) {
+						Red ++;
+					}
+					if (Red == 255 && Green == 0) {
+						Blue -= 1;
+					}
+					HRed = Red.toString(16);
+					HGreen = Green.toString(16);
+					HBlue = Blue.toString(16);
+					if (HRed.length < 2) {
+						HRed = "0" + HRed;
+					}
+					if (HGreen.length < 2) {
+						HGreen = "0" + HGreen;
+					}
+					if (HBlue.length < 2) {
+						HBlue = "0" + HBlue;
+					}
+
+					Color = "#" + HRed + HGreen + HBlue;
+					BackColor = "#" + HBlue + HRed + HGreen;
+					BackBackColor = "#" +  HGreen + HBlue + HRed;
+					canvas.style = "background-color: " + BackColor + ";" + "border: 1px solid" + Color + ";";
+					body.style = "background-color: " + BackBackColor + ";"
+					h1.style = "color:" + Color + ";font-family: arial;text-align: center;";
+
+				} 
+
+			function loop() {
+
+				ChangeColor();
+				requestAnimationFrame(loop);
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+
+				for (i = 0; i < cellsAmount; i++){
+					paddle[i].x += paddle[i].speed;
+				}
+
+				for (i = 0; i < cellsAmount; i++){
+					if (paddle[i].x < grid){
+						for (j = 0; j < cellsAmount; j++){
+						paddle[j].x = grid*j + 2;
+						}
+					}
+				}
+				if (paddle[cellsAmount-1].x > canvas.width - paddle[cellsAmount-1].width){
+					for (j = 0; j < cellsAmount; j++){
+						paddle[j].x = maxdownx - ((cellsAmount-j) * grid) + cellsAmount * grid;
+						
+					}
+				}
+
+				ctx.fillStyle = (Color);
+				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
+
+				ctx.font = "35px Arial";
+				ctx.fillStyle = (Color);
+				ctx.fillText(seconds + " сек", 10, 35);
+
+
+				for (i=0;i < ups.length;i++){
+
+					ups[i].draw();
+				}
+				for (i = 0; i < cellsAmount; i++){
+					ctx.fillStyle = (Color);
+					ctx.fillRect(paddle[i].x,paddle[i].y,paddle[i].width,paddle[i].height);
+				}
+
+
+				ball.x += ball.dx;
+				ball.y += ball.dy;
+
+				if (ball.y < grid) {
+
+					ball.y = grid;
+					ball.dy *= -1;
+
+				} else if (ball.x < grid) {
+
+					ball.x = grid;
+					ball.dx *= -1;
+
+				} else if (ball.x + grid > canvas.width - grid) {
+
+					ball.x = canvas.width - grid * 2;
+					ball.dx *= -1;
+				}
+
+				if (ball.y > canvas.height + 15) {
+
+					ctx.drawImage(img1, 10, 10);
+					dead.play();
+					alert("u vas mat' sgorela");
+					start();
+
+				}
+				if (ups.length === tped){
+					win.play();
+					alert("u vas mat' potushili");
+					start();
+				}
+
+				for (i = 0; i < cellsAmount; i++){
+					if (collides(ball, paddle[i])){
+						ball.dy = ball.dy*-1 - paddle[i].dy;
+						if (ball.dy > 8){
+							ball.dy = 8;
+						} 
+						if (ball.dy < -8){
+							ball.dy = -8;
+						} 
+
+						ball.y -=40;
+						ball.dx = ball.dx + paddle[i].dx;
+						if (ball.dx > 8){
+							ball.dx = 8;
+						} 
+						if (ball.dx < -8){
+							ball.dx = -8;
+						} 
+						break;
+					}
+				}
+
+				for (i=0;i < ups.length;i++){
+
+					if (collides(ball, ups[i])) {
+
+						ball.dy *= -1;
+						ball.y = ups[i].y + ups[i].height;
+						ups[i].x +=10000;
+						tped++;
+						boom.play();
+						break;
+					}
+				}	
+			}
+
+			var count = setInterval(counter, 1000);
+			var seconds = 0;
+
+			var colourchange = setInterval(ChangeColor, 10);
+
+			function counter() {
+
+				seconds++;
+				ctx.fillStyle = "white";
+			}
+
+			document.addEventListener('keydown', buttonpress);
+
+				function buttonpress(e) {
+					if (e.which === 37) {
+
+						//down.dx = -paddleSpeed;
+					for (i = 0; i < cellsAmount; i++){
+						paddle[i].speed = -paddleSpeed;
+					}
+
+					} else if (e.which === 39) {
+
+						//down.dx = paddleSpeed;
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = paddleSpeed;
+						}
+
+					}
+				}
+
+				document.addEventListener('keyup', buttonunpress);
+
+				function buttonunpress(e) {
+
+					if (e.which === 37 || e.which === 39) {
+
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = 0;
+						}
+					}
+
+				}
+
+			requestAnimationFrame(loop);
+
+		</script>
+
+	</body>
+
+</html>

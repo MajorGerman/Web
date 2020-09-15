@@ -17,7 +17,6 @@
 			body {
 
 				background: black;
-				display: flex;
 				align-items: center;
 				justify-content: center;
 
@@ -41,7 +40,7 @@
 			<tr>
 				<th>
 					
-					<h1 id="h1"> Laabe-Buslaev BreakOut 2.0 Classic </h1>
+					<h1 id="h1"> Laabe-Buslaev BreakOut 2.2 Mobile </h1>
 
 				</th>
 
@@ -50,7 +49,7 @@
 			<tr>
 				<th>
 
-					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF"> </canvas>
+					<canvas id="canvas" width="1500" height="625" style="border:1px solid #FFFFFF"> </canvas>
 					
 				</th>
 
@@ -169,13 +168,13 @@
 				seconds = -1;
 
 				for (i = 0; i < 8; i++){
-					for (j = 0; j < 14; j++){
-						ups.push(new up(j*130+60, i*30 + 65));
+					for (j = 0; j < 10; j++){
+						ups.push(new up(j*130+110, i*30 + 70));
 					}
 				}
 				for (i = 0; i < cellsAmount; i++){
 					relpos = (i / cellsAmount) * 16 + 2;
-					paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3 , (relpos - 10), (-1*Math.abs(relpos-10)+10)));
+					paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3 , (relpos - 7), (-1*Math.abs(relpos-10)+7)));
 				}
 
 			} 
@@ -302,20 +301,20 @@
 				for (i = 0; i < cellsAmount; i++){
 					if (collides(ball, paddle[i])){
 						ball.dy = ball.dy*-1 - paddle[i].dy;
-						if (ball.dy > 8){
-							ball.dy = 8;
+						if (ball.dy > 6){
+							ball.dy = 6;
 						} 
-						if (ball.dy < -8){
-							ball.dy = -8;
+						if (ball.dy < -6){
+							ball.dy = -6;
 						} 
 
 						ball.y -=40;
 						ball.dx = ball.dx + paddle[i].dx;
-						if (ball.dx > 8){
-							ball.dx = 8;
+						if (ball.dx > 6){
+							ball.dx = 6;
 						} 
-						if (ball.dx < -8){
-							ball.dx = -8;
+						if (ball.dx < -6){
+							ball.dx = -6;
 						} 
 						break;
 					}
@@ -330,6 +329,7 @@
 						ups[i].x +=10000;
 						tped++;
 						boom.play();
+						break;
 					}
 				}	
 			}
@@ -377,6 +377,56 @@
 					}
 
 				}
+
+				document.addEventListener('mousedown', mousepress);
+
+				function mousepress(e){
+					if (e.offsetX > canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = paddleSpeed;
+						}
+					}else if(e.offsetX < canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = -paddleSpeed;
+						}
+					}
+
+				}
+
+				document.addEventListener('mouseup', mouseunpress);
+
+				function mouseunpress(e) {
+					for (i = 0; i < cellsAmount; i++){
+						paddle[i].speed = 0;
+
+				}
+			}
+
+				document.addEventListener('touchstart', touchpress);
+
+				function touchpress(e){
+					if (e.changedTouches[0].pageX > canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = paddleSpeed;
+						}
+					}else if(e.changedTouches[0].pageX < canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = -paddleSpeed;
+						}
+					}
+					e.preventDefault()
+
+				}
+
+				document.addEventListener('touchend', touchunpress);
+
+				function touchunpress(e) {
+					for (i = 0; i < cellsAmount; i++){
+						paddle[i].speed = 0;
+
+				}
+					e.preventDefault()
+			}
 
 			requestAnimationFrame(loop);
 

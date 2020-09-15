@@ -41,7 +41,7 @@
 			<tr>
 				<th>
 					
-					<h1 id="h1"> Laabe-Buslaev BreakOut 2.0 Rainbow Edition </h1>
+					<h1 id="h1"> Laabe-Buslaev BreakOut 2.2 Classic </h1>
 
 				</th>
 
@@ -155,15 +155,7 @@
 
 			var relpos = 0;
 
-			var Red = 255;
-			var Green = 0;
-			var Blue = 0;
-
-			var HRed = 0;
-			var HGreen = 0;
-			var HBlue = 0;
-
-			var Color = "";
+			var Color = "white";
 
 			function start(){
 				ups = [];
@@ -189,9 +181,6 @@
 			} 
 				start();
 
-			function sleep(ms) {
-  				return new Promise(resolve => setTimeout(resolve, ms));
-			}
 			function beepboop(a = ""){
 				alert("beepboop"+ a);
 			}
@@ -199,6 +188,7 @@
 			h1 = document.getElementById("h1");
 			body = document.getElementById("body");
 
+			//ChangeColor() есть. но не вызывается. Используется только в Rainbow Edition.
 			function ChangeColor() {
 					if (Red == 255 && Blue == 0) {
 						Green ++;
@@ -232,17 +222,9 @@
 					}
 
 					Color = "#" + HRed + HGreen + HBlue;
-					BackColor = "#" + HBlue + HRed + HGreen;
-					BackBackColor = "#" +  HGreen + HBlue + HRed;
-					canvas.style = "background-color: " + BackColor + ";" + "border: 1px solid" + Color + ";";
-					body.style = "background-color: " + BackBackColor + ";"
-					h1.style = "color:" + Color + ";font-family: arial;text-align: center;";
-
 				} 
 
 			function loop() {
-
-				ChangeColor();
 				requestAnimationFrame(loop);
 				ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -346,6 +328,7 @@
 						ups[i].x +=10000;
 						tped++;
 						boom.play();
+						break;
 					}
 				}	
 			}
@@ -393,6 +376,29 @@
 					}
 
 				}
+				document.addEventListener('mousedown', mousepress);
+
+				function mousepress(e){
+					if (e.offsetX > canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = paddleSpeed;
+						}
+					}else if(e.offsetX < canvas.width/2){
+						for (i = 0; i < cellsAmount; i++){
+							paddle[i].speed = -paddleSpeed;
+						}
+					}
+
+				}
+
+				document.addEventListener('mouseup', mouseunpress);
+
+				function mouseunpress(e) {
+					for (i = 0; i < cellsAmount; i++){
+						paddle[i].speed = 0;
+
+				}
+			}
 
 			requestAnimationFrame(loop);
 
