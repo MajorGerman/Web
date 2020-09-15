@@ -34,14 +34,14 @@
 
 	</head>
 
-	<body>
+	<body id="body">
 
 		<table>
 			
 			<tr>
 				<th>
 					
-					<h1> Laabe-Buslaev BreakOut 1.3 </h1>
+					<h1 id="h1"> Laabe-Buslaev BreakOut 2.0 Rainbow Edition </h1>
 
 				</th>
 
@@ -50,7 +50,7 @@
 			<tr>
 				<th>
 
-					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF;"> </canvas>
+					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF"> </canvas>
 					
 				</th>
 
@@ -83,6 +83,8 @@
 			var tped = 0;
 			var cellsAmount = 21;
 
+			var rainbow = document.getElementById("rainbow");
+
 			const maxdownx = canvas.width - cellsAmount*grid;
 
 			class up {
@@ -95,6 +97,7 @@
 
 				}
 				draw(){
+					ctx.fillStyle = (Color);
 					ctx.fillRect(this.x, this.y,this.width,this.height);
 				} 
 
@@ -113,6 +116,7 @@
 
 				}
 				draw(){
+					ctx.fillStyle = (Color);
 					ctx.fillRect(this.x, this.y,this.width,this.height);
 				}
 			}
@@ -149,6 +153,18 @@
 
 			var img1 = document.getElementById("img1");
 
+			var relpos = 0;
+
+			var Red = 255;
+			var Green = 0;
+			var Blue = 0;
+
+			var HRed = 0;
+			var HGreen = 0;
+			var HBlue = 0;
+
+			var Color = "";
+
 			function start(){
 				ups = [];
 				paddle = [];
@@ -166,7 +182,8 @@
 					}
 				}
 				for (i = 0; i < cellsAmount; i++){
-				paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3,(ballSpeed*Math.cos(45+(100/cellsAmount)*i)),-Math.abs((ballSpeed*Math.sin(45+(100/cellsAmount)*i)))));
+					relpos = (i / cellsAmount) * 16 + 2;
+					paddle.push(new cell(canvas.width / 2 - 150 + i*grid , canvas.height - grid * 3 , (relpos - 10), (-1*Math.abs(relpos-10)+10)));
 				}
 
 			} 
@@ -175,9 +192,57 @@
 			function sleep(ms) {
   				return new Promise(resolve => setTimeout(resolve, ms));
 			}
+			function beepboop(a = ""){
+				alert("beepboop"+ a);
+			}
+
+			h1 = document.getElementById("h1");
+			body = document.getElementById("body");
+
+			function ChangeColor() {
+					if (Red == 255 && Blue == 0) {
+						Green ++;
+					}
+					if (Green == 255 && Blue == 0) {
+						Red -= 1;
+					}
+					if (Red == 0 && Green == 255) {
+						Blue ++;
+					}
+					if (Red == 0 && Blue == 255) {
+						Green -= 1;
+					}
+					if (Blue == 255 && Green == 0) {
+						Red ++;
+					}
+					if (Red == 255 && Green == 0) {
+						Blue -= 1;
+					}
+					HRed = Red.toString(16);
+					HGreen = Green.toString(16);
+					HBlue = Blue.toString(16);
+					if (HRed.length < 2) {
+						HRed = "0" + HRed;
+					}
+					if (HGreen.length < 2) {
+						HGreen = "0" + HGreen;
+					}
+					if (HBlue.length < 2) {
+						HBlue = "0" + HBlue;
+					}
+
+					Color = "#" + HRed + HGreen + HBlue;
+					BackColor = "#" + HBlue + HRed + HGreen;
+					BackBackColor = "#" +  HGreen + HBlue + HRed;
+					canvas.style = "background-color: " + BackColor + ";" + "border: 1px solid" + Color + ";";
+					body.style = "background-color: " + BackBackColor + ";"
+					h1.style = "color:" + Color + ";font-family: arial;text-align: center;";
+
+				} 
 
 			function loop() {
 
+				ChangeColor();
 				requestAnimationFrame(loop);
 				ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -199,19 +264,20 @@
 					}
 				}
 
-
-
-				ctx.fillStyle = "white";
+				ctx.fillStyle = (Color);
 				ctx.fillRect(ball.x,ball.y,ball.width,ball.height);
 
 				ctx.font = "35px Arial";
-				ctx.fillText(seconds + " сек", 10, 30);
+				ctx.fillStyle = (Color);
+				ctx.fillText(seconds + " сек", 10, 35);
+
 
 				for (i=0;i < ups.length;i++){
 
 					ups[i].draw();
 				}
 				for (i = 0; i < cellsAmount; i++){
+					ctx.fillStyle = (Color);
 					ctx.fillRect(paddle[i].x,paddle[i].y,paddle[i].width,paddle[i].height);
 				}
 
@@ -251,14 +317,22 @@
 
 				for (i = 0; i < cellsAmount; i++){
 					if (collides(ball, paddle[i])){
-						ball.dy = paddle[i].dy;
+						ball.dy = ball.dy*-1 - paddle[i].dy;
+						if (ball.dy > 8){
+							ball.dy = 8;
+						} 
+						if (ball.dy < -8){
+							ball.dy = -8;
+						} 
+
 						ball.y -=40;
-						ball.dx = paddle[i].dx;
-						if (ball.dy > -1) {
-							ball.dy = -2;
-
-						}
-
+						ball.dx = ball.dx + paddle[i].dx;
+						if (ball.dx > 8){
+							ball.dx = 8;
+						} 
+						if (ball.dx < -8){
+							ball.dx = -8;
+						} 
 						break;
 					}
 				}
@@ -278,6 +352,8 @@
 
 			var count = setInterval(counter, 1000);
 			var seconds = 0;
+
+			var colourchange = setInterval(ChangeColor, 10);
 
 			function counter() {
 
