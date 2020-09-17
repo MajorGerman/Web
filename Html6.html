@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Супер-Сайт Георга Лаабе </title>
+</head>
+
+<body align="center">
+
+	<style>
+
+		body {
+
+			font-family: Verdana;
+			color: white;
+			background-image: url(Light.jpg);
+			background-size:2400px;
+			text-shadow: 
+			-0   -1px 6px #000000,
+			 0   -1px 6px #000000,
+			-0    1px 6px #000000,
+			 0    1px 6px #000000,
+			-1px -0   6px #000000,
+		 	 1px -0   6px #000000,
+			-1px  0   6px #000000,
+		     1px  0   6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000;
+		}
+
+		#answer {
+			font-size: 19px;
+			color: white;
+		}
+
+		#
+
+	</style>
+
+	<h1 id="headline"> Супер Сайт Георга Лаабе 2.0 </h1>
+	<h3> Мы продолжаем работать над заданиями! </h3>
+
+	<br><br>
+	<div id="answer"> Я люблю Фикуса</div>
+
+	<br><br>
+	<h3> Поэтому введите ваше имя, нажмите на кнопку и перезагрузите страницу </h3>
+
+	<input type="text" id="txt1" width="200" height="100" placeholder="Имя">
+	<input type="button" id="btn1" width="80" height="45" value=" Нажми сюда " onclick="buttonPress()">
+	<input type="button" id="btn2" width="80" height="45" value=" Сбросить данные " onclick="button2Press()">
+
+	<table id="tbl1"> <h2 id="nameland"></h2> </table>
+
+	<br><br><br><br>
+	
+	<input type="button" value=" Фибоначчить " id="btn3">
+
+	<div id="output"></div>
+
+	<script type="text/javascript">
+
+		txt1 = document.getElementById("txt1");
+		nameland = document.getElementById("nameland");
+		btn1 = document.getElementById("btn1");
+
+		answer = document.getElementById("answer");
+		headline = document.getElementById("headline");
+		
+		btn3 = document.getElementById("btn3");
+
+		var Red = 255;
+		var Green = 0;
+		var Blue = 0;
+
+		var HRed = 0;
+		var HGreen = 0;
+		var HBlue = 0;
+
+		var Color = "";
+
+		var colourchange = setInterval(ChangeColor, 0.35);
+
+		window.addEventListener("load", init, false);
+
+		function init() {
+			e = document.getElementById('answer');
+
+			if(window.sessionStorage) {
+				e.innerHTML = "Мы поддерживаем сессионное хранилище";
+			} else {
+				e.innerHTML = "Мы не поддерживаем сессионное хранилище";
+			}
+
+			if(window.localStorage) {
+				e.innerHTML += " и локальное хранилище";
+			} else {
+				e.innerHTML += "";
+			}
+
+			if (window.sessionStorage.getItem("Name") == null) {
+				nameland.innerHTML = "";
+			} else {
+				nameland.innerHTML = "Привет, " + window.sessionStorage.getItem("Name");
+			}
+
+			if (window.sessionStorage.getItem("Name") != null) {
+				btn1.hidden = "hidden";
+				txt1.hidden = "hidden";
+				btn2.hidden = "";
+			} else {
+				btn1.hidden = "";
+				txt1.hidden = "";
+				btn2.hidden = "hidden";
+			}
+
+			var worker = new Worker("task.js");
+
+			worker.addEventListener("message", function(e) {
+				document.getElementById("output").innerHTML += "Ответ потока:" + e.data + "<br>" + "<br>";
+			}, false);
+			
+			btn3.onclick = function() {
+				worker.postMessage("");			
+			}
+		}
+
+		function buttonPress() {
+			window.sessionStorage.setItem("Name", txt1.value);
+			nameland.innerHTML = "Привет, " + window.sessionStorage.getItem("Name");
+			btn1.hidden = "hidden";
+			txt1.hidden = "hidden";
+			btn2.hidden = "";
+		}
+
+		function button2Press() {
+			window.sessionStorage.setItem("Name", null);
+			nameland.innerHTML = "";
+			btn1.hidden = "";
+			txt1.hidden = "";
+			btn2.hidden = "hidden";
+		}
+		function ChangeColor() {
+				if (Red == 255 && Blue == 0) {
+					Green ++;
+				}
+				if (Green == 255 && Blue == 0) {
+					Red -= 1;
+				}
+				if (Red == 0 && Green == 255) {
+					Blue ++;
+				}
+				if (Red == 0 && Blue == 255) {
+					Green -= 1;
+				}
+				if (Blue == 255 && Green == 0) {
+					Red ++;
+				}
+				if (Red == 255 && Green == 0) {
+					Blue -= 1;
+				}
+				HRed = Red.toString(16);
+				HGreen = Green.toString(16);
+				HBlue = Blue.toString(16);
+				if (HRed.length < 2) {
+					HRed = "0" + HRed;
+				}
+				if (HGreen.length < 2) {
+					HGreen = "0" + HGreen;
+				}
+				if (HBlue.length < 2) {
+					HBlue = "0" + HBlue;
+				}		
+				Color = "#" + HRed + HGreen + HBlue;
+				answer.style = "color: " + Color;
+				answer.style = "color: " + Color;
+			}
+
+	</script>
+
+</body>
+
+</html>
