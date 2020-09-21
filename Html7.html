@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Супер-Сайт Георга Лаабе </title>
+</head>
+
+<body align="center" id="body">
+
+	<style>
+
+		body {
+
+			font-family: Verdana;
+			color: white;
+			background-size:2400px;
+			text-shadow: 
+			-0   -1px 6px #000000,
+			 0   -1px 6px #000000,
+			-0    1px 6px #000000,
+			 0    1px 6px #000000,
+			-1px -0   6px #000000,
+		 	 1px -0   6px #000000,
+			-1px  0   6px #000000,
+		     1px  0   6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000;
+		}
+
+		#txt1 {
+			border-style: dashed;
+			border-width: 10px;
+			border-bottom-color: cyan;
+			border-top-color: lime;
+			border-left-color: red;
+			border-right-color: yellow;
+			border-radius: 10px;
+			width: 800px;
+			height: 70px;
+			margin: auto;
+
+		}
+
+		h3[type=rainbow] {
+			border-style: double;
+			border-width: 7px;
+			width: 500px;
+			height: 140px;
+			margin: auto;
+			font-family: Comic Sans Ms;
+		}
+
+		#img1 {
+
+			width: 600px;
+			border-style: solid;
+			border-color: black;
+		}
+
+		#img2 {
+
+			width: 720px;
+			border-style: solid;
+			border-color: black;
+		}
+
+		.scale {
+    		transition: 1s;
+   		}
+
+   		.scale:hover {
+    		transform: scale(1.2);
+
+    	}
+
+		.fade {
+    		transition: 0.5s;
+   		}
+
+   		.fade:hover {
+    		opacity: 0.3;
+    	}
+
+	</style>
+
+	<h1 id="headline"> Супер Сайт Георга Лаабе 2.0 (помогал Никита)</h1>
+
+	<br>
+
+	<h3 id="txt1"> <br> Георг Лаабе </h3>
+
+	<br>
+
+	<h3 id="txt2" type="rainbow"> <br> <br> пишет самые замечательные сайты </h3>
+
+	<br>
+
+	<h2> Наведи курсор на фото! </h2>
+
+	<br>
+
+	<img src="Uniarka.png" id="img1" class='scale'>
+
+	<br><br>
+
+	<img src="Uniarka2.jpg" id="img2" class='fade'>
+
+	<script type="text/javascript">
+
+		var txt2 = document.getElementById("txt2");
+
+		var img1 = document.getElementById("img1");
+
+		var colourchange = setInterval(ChangeColor, 0.25);
+
+		var body = document.getElementById("body");
+
+		var Red = 255;
+		var Green = 0;
+		var Blue = 0;
+
+		var HRed = 0;
+		var HGreen = 0;
+		var HBlue = 0;
+
+		var Color = "";
+
+		var Hue = 0;
+		var Satur = 100;
+		var Light = 100;
+
+		function ChangeColor() {
+				if (Red == 255 && Blue == 0) {
+					Green ++;
+				}
+				if (Green == 255 && Blue == 0) {
+					Red -= 1;
+				}
+				if (Red == 0 && Green == 255) {
+					Blue ++;
+				}
+				if (Red == 0 && Blue == 255) {
+					Green -= 1;
+				}
+				if (Blue == 255 && Green == 0) {
+					Red ++;
+				}
+				if (Red == 255 && Green == 0) {
+					Blue -= 1;
+				}
+				HRed = Red.toString(16);
+				HGreen = Green.toString(16);
+				HBlue = Blue.toString(16);
+				if (HRed.length < 2) {
+					HRed = "0" + HRed;
+				}
+				if (HGreen.length < 2) {
+					HGreen = "0" + HGreen;
+				}
+				if (HBlue.length < 2) {
+					HBlue = "0" + HBlue;
+				}		
+				Color = "#" + HRed + HGreen + HBlue;
+				txt2.style = "border-color: " + Color;
+
+				Hue+=0.075;
+				body.style = "background-color: hsl(" + Hue + "," + 50 + "%," + 50 + "%);";
+			}
+
+
+	</script>
+
+</body>
+
+</html>
