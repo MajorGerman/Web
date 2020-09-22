@@ -42,6 +42,7 @@
 				<th>
 					
 					<h1 id="h1"> Laabe-Buslaev BreakOut 2.2 Classic </h1>
+					<h1 id="h3"> Press on screen to play </h1>
 
 				</th>
 
@@ -50,7 +51,7 @@
 			<tr>
 				<th>
 
-					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF"> </canvas>
+					<canvas id="canvas" width="1920" height="1080" style="border:1px solid #FFFFFF" onclick="startstart()"> </canvas>
 					
 				</th>
 
@@ -86,6 +87,13 @@
 			var rainbow = document.getElementById("rainbow");
 
 			const maxdownx = canvas.width - cellsAmount*grid;
+
+			var press = document.getElementById("h3");
+
+			function startstart(){
+				requestAnimationFrame(loop);
+				h3.innerHTML = "";
+			}
 
 			class up {
 				constructor(x,y) {
@@ -399,8 +407,6 @@
 
 				}
 			}
-
-			requestAnimationFrame(loop);
 
 		</script>
 
