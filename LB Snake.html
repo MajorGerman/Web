@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 
 <html>
 
@@ -10,6 +10,7 @@
 
 		#body {
 			background-color: black;
+			display: flex;
 		}
 
 	</style>
@@ -41,8 +42,13 @@
 		</table>
 
 	<script>
+
+
 		const canvas = document.getElementById("canvas");
 		const ctx = canvas.getContext("2d");
+
+		ctx.canvas.width = window.innerWidth*(63/64);
+		ctx.canvas.height  = ctx.canvas.width/3;
 
 		const grid = 20;
 
