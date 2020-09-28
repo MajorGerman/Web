@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Супер-Сайт Георга Лаабе </title>
+</head>
+
+<body align="center">
+
+	<style>
+
+		body {
+
+			font-family: Verdana;
+			color: white;
+			background-image: url(Light.jpg);
+			background-size:2400px;
+			text-shadow: 
+			-0   -1px 6px #000000,
+			 0   -1px 6px #000000,
+			-0    1px 6px #000000,
+			 0    1px 6px #000000,
+			-1px -0   6px #000000,
+		 	 1px -0   6px #000000,
+			-1px  0   6px #000000,
+		     1px  0   6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000,
+			-1px -1px 6px #000000,
+			 1px -1px 6px #000000,
+			-1px  1px 6px #000000,
+			 1px  1px 6px #000000;
+			 counter-reset: Index;
+		}
+
+		p[id="yellow"]::after {
+			content: "Униарка!";
+		}
+
+		p[id="blue"]::before {
+			content: "Униарка";
+
+		}
+
+		p[id="yellow"] {
+			font-size: 20px;
+			color: yellow;
+		}
+		p[id="blue"] {
+			font-size: 20px;
+			color: cyan;
+		}
+
+		p {
+			counter-increment: Index;
+		}
+
+		h2::after {
+			content: counter(Index);
+		}
+
+		h2 {
+			color: lime;
+			transition: 0.7s;
+		}
+
+		h2:hover {
+			transform: scale(0.9);
+		}
+
+		input:checked + span {
+			color: yellow;
+			transition: 0.6s;
+			font-size: 16px;
+		}
+		span {
+			font-size: 15px;
+			color: white;
+			transition: 0.6s;
+		}
+
+
+	</style>
+
+	<h1 id="headline"> Супер Сайт Георга Лаабе 2.0 </h1>
+
+	<div class="first">
+		<p id="yellow">Лучшая страна - </p>
+		<p id="yellow">На все века - </p>
+		<p id="yellow">Место для жизни - </p>
+		<p id="yellow">Место для отдыха - </p>
+	</div>
+
+	<div class="second">
+		<p id="blue"> - Мне очень нравится!</p>
+		<p id="blue"> - Радует меня каждый день!</p>
+		<p id="blue"> - Вот где я хочу жить!</p>
+		<p id="blue"> - Вот где я хочу умереть!</p>
+	</div>
+
+	<br>
+	<h2> На этой странице строк во славу Униарки: </h2>
+
+	<br><br>
+	<input type="checkbox"> <span>Вы верите в Униарку?</span> 
+
+	<br><br><br>
+	<input type="checkbox"> <span>Вы любите кушать борщ?</span>
+
+	<br><br><br>
+	<input type="submit" value="Нажимать сюда" onclick="alert('Спасибо!')">
+
+</body>
+
+</html>
