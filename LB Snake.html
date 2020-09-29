@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -42,15 +42,13 @@
 		</table>
 
 	<script>
-
+		const grid = 20;
 
 		const canvas = document.getElementById("canvas");
 		const ctx = canvas.getContext("2d");
 
-		ctx.canvas.width = window.innerWidth*(63/64);
-		ctx.canvas.height  = ctx.canvas.width/3;
-
-		const grid = 20;
+		ctx.canvas.width = Math.trunc(window.innerWidth*(63/64)/grid)*grid;
+		ctx.canvas.height  = Math.trunc(ctx.canvas.width/3/grid)*grid;
 
 		class Snake {
 			constructor(){
