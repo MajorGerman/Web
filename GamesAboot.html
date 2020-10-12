@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+<head>
+
+	<title> GamesAboot - The Shelter for Geeks! </title>
+
+	<style>
+
+		body {
+			background-color: black;
+			font-family: arial;
+		}
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.sidenav {
+			margin: auto;
+			padding-top: 10px;
+			height: 100%;
+			min-width: 0px;
+			max-width: 400px;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 178px;
+			font-size: 30px;
+			color: #f0f0f0;
+			background-color: black;
+			box-shadow: inset 0px 0px 16px -4px rgba(93,245,7,0.5);
+			transition: 0.25s;
+		}
+
+		a {
+			margin: auto;
+			padding-top: 10px;
+			padding-left: 10px;
+			padding-right: 50px;
+			color: rgba(255,250,255,1);
+			transition: 0.45s;
+			text-decoration: none;
+			box-shadow: inset 0px 0px 3px -4px rgba(93,245,7,0.5);
+
+		}
+
+		.topnav {
+			margin: auto;
+			padding-bottom: 55px;
+			padding-top: 10px;
+			padding-left: 10px;
+			height: 90px;
+			width: 99%;
+			min-width: 0px;
+			z-index: 5;
+			font-size: 45px;
+			color: #f0f0f0;
+			background-color: black;	
+			box-shadow: inset 0px 0px 3px -4px rgba(93,245,7,0.5);	
+
+		}
+
+		.topnav2 {
+			margin: auto;
+			padding-top: 12px;
+			height: 55px;
+			width: 100%;
+			z-index: 8;
+			top: 0px;
+			font-size: 35px;
+			color: #f0f0f0;
+			background-color: black;
+			text-align: center;
+			box-shadow: inset 0px 0px 16px -4px rgba(93,245,7,0.5);
+
+		}
+		#body-text {
+			margin: auto;
+			font-family: arial;
+			font-size: 21px;
+			text-align: center;
+			padding-left: 40px;
+			padding-right: 20px;
+			color: rgba(255,250,255,1);
+			text-shadow: 0px 0px 6px rgba(93,252,7,0.7);
+			transition: 0.45s;
+
+		}
+
+		#body-text:hover {
+			color: rgba(93,200,7,1);
+			text-shadow: 0px 0px 9px rgba(93,252,7,0.8);			
+		}
+
+
+		.tg {
+			margin: auto;
+			width: 100%;
+			height: 100%;
+			box-shadow: inset 0px 2px 18px -3px rgba(93,245,7,0.5);
+
+		}
+
+		a:hover {
+			color: rgba(93,200,7,1);
+			text-shadow: 0px 0px 12px rgba(93,252,7,0.5);
+		}
+
+		.sidenav2 {
+			margin: auto;
+			height: 100%;
+			min-width: 0px;
+			max-width: 200px;
+			position: fixed;
+			z-index: 1;
+			right: -5px;
+			top: 178px;
+			font-size: 30px;
+			color: #f0f0f0;
+			background-color: black;
+			padding-top: 10px;
+			padding-left: 15px;
+			padding-right: 5px;
+			transition: 0.25s;
+			box-shadow: inset 0px 0px 16px -4px rgba(93,245,7,0.5);
+			width: 0px;
+			text-align: left;
+			white-space: nowrap;
+			transition: 0.25s;
+		}
+
+		#textarea {
+			width: 180px;
+			margin-top: 10px;
+			resize: none;
+		}
+
+		.sidenav2:hover {
+			margin-right: 5px;
+			width: 200px;
+			right: -15px;
+			font-size: 30px;
+		}
+
+		#imgs {
+			margin: auto;
+			margin-left: 60px;
+			width: 180px;
+			height: 210px;
+			transition: 0.6s;
+			box-shadow: 0px 2px 18px -3px rgba(93,245,7,0.5);
+		}
+
+		#imgs:hover {
+			transform: scale(1.1);
+		}
+
+		#pp {
+			text-align: center;
+			padding-bottom: 20px;
+			box-shadow: 0px 2px 18px -3px rgba(93,245,7,0.5);
+		}
+
+		.mainphoto {
+			width: 340px;
+			padding-left: 40px;
+			padding-top: 10px;
+			transition: 0.7s;
+
+
+		}
+
+		.mainphoto:hover {
+			transform: scale(1.1);
+
+		}
+
+	</style>
+
+</head>
+
+<body id="body">
+
+	<table class="tg">
+		<thead>
+			<tr>
+				<th colspan="2" style="border: 1px bold black"> 
+					<header class="topnav">
+						<a href="#"><img class="mainphoto" src="AbootLogo2.png"><a>
+					</header>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="3"> 
+					<nav id="sidenav" class="sidenav">
+						<a href="#"> Новости </a> <br>
+						<a href="#"> Игры </a> <br>
+						<a href="#"> Статьи </a> <br>
+						<a href="#"> b </a>
+					</nav>
+				</td>
+				<td>
+					<nav id="topnav2" class="topnav2">
+						<a href="#"> Главная </a>
+						<a href="#"> FAQ </a>
+						<a href="#"> О нас </a>
+					</nav>
+				</td>
+				<td rowspan="2">
+					<nav id="sidenav2" class="sidenav2">
+						<form>
+							<p id="search-text">Поиск игры</p>
+							<input id="textarea" placeholder="Например, Minecraft">
+							<br>
+							<input type="button" style="width: 60px; margin-left: 120px" value="Найти" onclick="alert('На нашем сайте не найдено такой игры!')">
+						</form>
+					</nav>
+				</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">
+					<table align="center" style="text-align:center; width: 100%; padding-left: 160px; padding-right: 250px"> 
+						<thead> 
+							<tr> 
+								<th colspan="4">
+									<p style="font-size: 30px; color: white; font-family: arial;text-align:center;padding-left: 90px;text-shadow: 0px 0px 7px rgba(93,252,7,0.8);">Новинки!</p>
+								</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							<tr> 
+								<td>
+									<br>
+									<a href="#"><img id="imgs" src="Half-Life.jpg"></a>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><img id="imgs" src="Kerbal.jpg"></a>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><img id="imgs" src="Diablo.jpg"></a>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><img id="imgs" src="Factorio.jpg"></a>
+								</td> 
+							</tr> c
+							<tr> 
+								<td>
+									<br>
+									<a href="#"><p id="body-text" style="color:white;text-align:center;margin: auto; padding: auto;"> Half-Life </p></a>
+									<br><br>
+									<p style="text-shadow: 0px 0px 7px rgba(93,252,7,0.8);font-family: arial; color:white;margin:auto;text-align:center;padding-left: 30px;margin-bottom: 110px"> Компьютерная игра в жанре научно-фантастического шутера от первого лица, разработанная компанией Valve Software и изданная Sierra Studios 19 ноября 1998 года для персонального компьютера. Первая игра в серии Half-Life. Технически игра основана на значительно переработанном движке Quake от id Software. В 2001 году студия Gearbox Software портировала Half-Life на консоль PlayStation.</p>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><p id="body-text" style="color:white;text-align:center;margin: auto; padding: auto;"> Kerbal Space Program 2 </p></a>
+									<br><br>
+									<p style="text-shadow: 0px 0px 7px rgba(93,252,7,0.8);font-family: arial; color:white;margin:auto;text-align:center;padding-left: 30px;margin-bottom: 110px"> Предстоящая компьютерная игра в жанре космический симулятор, разрабатываемая студией Star Theory Games (ранее Uber Entertainment) и издаваемая Private Division на ПК и консоли PlayStation 4 и Xbox One.</p>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><p id="body-text" style="font-family: arial; color:white;text-align:center;margin: auto; padding: auto;"> Diablo IV </p></a>
+									<br><br>
+									<p style="text-shadow: 0px 0px 7px rgba(93,252,7,0.8);color:white;text-align:center;margin:auto;padding-left: 30px;margin-bottom: 110px"> Находящаяся в разработке компьютерная игра компании Blizzard Entertainment, продолжение игровой серии Diablo. Игра была анонсирована на BlizzCon 1 ноября 2019 года для платформ Windows, PlayStation 4 и Xbox One.</p>
+								</td> 
+								<td>
+									<br>
+									<a href="#"><p id="body-text" style="color:white;text-align:center;margin: auto; padding: auto;"> Factorio </p></a>
+									<br><br>
+									<p style="text-shadow: 0px 0px 7px rgba(93,252,7,0.8);font-family: arial; color:white;margin:auto; text-align:center;padding-left: 30px;margin-bottom: 110px"> Компьютерная игра в жанре стратегии в реальном времени, разрабатываемая независимой чешской студией Wube Software. Выход альфа-версии игры состоялся 25 февраля 2016 года в Steam в раннем доступе. 14 августа 2020 года игра вышла из раннего доступа с версией 1.0.</p>
+								</td> 
+							</tr> 
+						</tbody> 
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table>
+
+
+
+	</table>
+
+	<script>
+
+		var sidenav = document.getElementById('sidenav');
+		var sidenav2 = document.getElementById('sidenav2');
+
+		var scroll_y = window.scrollY; 
+        var relheight = 100 - window.scrollY;
+
+		html = document.getElementById('html');
+
+		var sjddsafjdf = setInterval(scroll, 10);
+
+		function scroll(){ 
+  			
+            scroll_y = window.scrollY; 
+            relheight = Math.floor(100 - window.scrollY);
+            if (Math.floor(window.scrollY) < 1) {
+            	sidenav.style = "top:" + relheight + ";";
+            	sidenav2.style = "top:" + relheight + ";";
+        	} else {
+        		sidenav.style = "top:0;";
+        		sidenav2.style = "top:0;";
+        	}
+        }
+
+	</script>
+
+</body>
+
+</html>
