@@ -1,0 +1,25 @@
+* {
+	font-family: comic sans ms;
+}
+
+.row {
+	background: #e3de4d;
+	height: 50px;
+
+}
+
+.row div {
+	text-align: center;
+	height: 50px;
+	border: groove;
+	border-color: black;
+	border-width: 2px;
+
+}
+
+.row div:nth-child(odd) {
+	font-size: 25px;
+}
+.row div:nth-child(even) {
+	font-size: 25px;
+}

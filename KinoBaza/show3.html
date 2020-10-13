@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Фильм Безумный Макс</title>
+	<meta name="description" content="Кинобаза - это портал о кино" />
+	<meta name="keywords" content="фильмы, фильмы онлайн, hd" />
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="images.png" type="image/x-icon" />
+</head>
+<body>
+	<main>
+		<header>
+			<div class="logo">
+				<div class="logo_text">
+					<h1><a href="index.html">КиноБаза</a></h1>
+					<h2>Кино - наша страсть!</h2>
+				</div>
+			</div> 
+			<nav class="menubar">
+				<ul class="menu">
+					<li class="selected"><a href="index.html">Главная</a></li>
+					<li><a href="films.html">Фильмы</a></li>
+					<li><a href="#">Сериалы</a></li>
+					<li><a href="rating.html">Рейтинг фильмов</a></li>
+					<li><a href="contact.html">Контакты</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="site_content">
+			<aside class="sidebar_container">
+				<div class="sidebar">
+					<h2>Поиск</h2>
+					<form method="post" action="#" id="search_form">
+						<input type="search" name="search_field" placeholder="Ваш запрос" />
+						<input type="submit" class="btn" value="Найти" />
+					</form>
+				</div>
+				<div class="sidebar">
+					<h2>Вход</h2>
+					<form method="post" action="#" id="login">
+						<input type="text" name="login_field" placeholder="Логин" />
+						<input type="password" name="password_field" placeholder="Пароль" />
+						<input type="submit" class="btn" value="Вход" />
+						<div class="lables_passreg_text">
+							<span><a href="#">Забыли пароль?</a></span> | <span><a href="#">Регистрация</a></span>
+				</div>
+			</form>
+		</div>
+
+				<div class="sidebar">
+					<h2>Новости</h2>
+					<span>31.02.2018</span>
+					<p>Мы запустили расширенный поиск</p>
+					<a href="#">читать</a>
+				</div>
+
+				<div class="sidebar">
+						<h2>Рейтинг фильмов</h2>
+					<ul>
+						<li><a href="show.html">Интерстеллар</a><span class="rating_sidebar">8.1</span></li>
+						<li><a href="show2.html">Матрица</a><span class="rating_sidebar">8.0</span></li>
+						<li><a href="show3.html">Безумный Макс</a><span class="rating_sidebar">7.5</span></li>
+						<li><a href="show4.html">Облачный атлас</a><span class="rating_sidebar">7.4</span></li>
+					</ul>
+				</div>
+			</aside>
+
+			<content>
+				<h1>Безумный Макс</h1>
+
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/yuJf6E_Gq5c" frameborder="0" allowfullscreen></iframe>
+
+				<div class="info_film_page">
+					<span class="label">рейтинг: </span><span class="value">7.5 / 10</span>
+					<span class="label">год: </span><span class="value">2015</span>
+					<span class="label">режиссёр: </span><span class="value">Джордж Миллер</span>
+				</div>
+				<hr>
+				<h2>Описание: Безумный Макс</h2>
+				<article class="descriptions_film">
+					<img src="max.png">
+						Макс скитается по выжженной планете в полном одиночестве, ведь, по его мнению, это единственный способ выжить. Однако это не спасает главного героя от налетчиков из Цитадели, и после недолгой погони Макс попадает в плен, где становится донором крови для одного из приспешников тирана по имени Несмертный Джо.
+						Цитадель стоит на огромных запасах воды, и это дает Несмертному Джо власть над окружающими. Однажды один из полевых командиров – девушка Фуриоса, сбегает от своего хозяина на огромном бронированном грузовике, и ко всему прочему успевает прихватить с собой часть гарема диктатора.
+				</article>
+
+				<hr>
+				<h2>Отзывы:</h2>
+
+				<div class="reviews">
+					<div class="review_name">
+						Анна
+					</div>
+					<div class="review_text">
+						Хорошо провела время, спасибо администрации сайта.
+					</div>
+				</div>
+
+				<div class="reviews">
+					<div class="review_name">
+						Роман
+					</div>
+					<div class="review_text">
+						Фильм отстой, хотя сайт и правда порадовал, удобный в использовании интерфейс.
+					</div>
+				</div>
+
+				<div class="send">
+					<form method="post" action="#" id="review">
+						<input type="text" name="review_name" placeholder="ваше имя">
+						<textarea name="review_text"></textarea>
+						<input class="btn" type="submit" value="отправить">
+					</form>
+				</div>
+			</content>
+		</div>
+
+		<footer>
+			<nav>
+				<a href="index.html">Главная</a> |
+				<a href="films.html">Фильмы</a> |
+				<a href="#">Сериалы</a> |
+				<a href="rating.html">Рейтинг фильмов</a> |
+				<a href="contact.html">Контакты</a>
+			</nav>
+			<p>kinopoisk.ru</p>
+		</footer>
+	</main>
+
+</body>
+</html>

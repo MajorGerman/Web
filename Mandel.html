@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title> Mandelbrot Set </title>
+
+		<style>
+
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: black;
+				display: flex;
+				text-align: center;
+			}
+
+			#canvas {
+				border: groove;
+				border-width: 2px;
+				border-color: white;
+				margin: auto;
+				margin-top: 100px;
+			}
+
+			h1 {
+				font-family: arial;
+				font-size: 20px;
+				color: white;
+				text-align: center;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<canvas id="canvas" width="1500" height="750"> </canvas> 
+
+		<script> 
+
+			const canvas = document.getElementById("canvas");
+			const ctx = canvas.getContext("2d");
+
+			var width = ctx.canvas.width ;
+			var height = ctx.canvas.height ;
+
+			var x = -2;
+			var y = -1;
+
+			var x_step = 1 / width*3;
+			var y_step = 1 / height*2;
+
+			var iterations = 2000;
+
+			class Complex {
+				constructor(a,b) {
+					this.a = a;
+					this.b = b;
+				}
+				sum(a,b) {
+					return new Complex(a.a+b.a, a.b+b.b);
+				}
+				absSquare() {
+					var a = Math.pow(this.a, 2) + Math.pow(this.b, 2);
+					return a;
+				}
+				toStr(){
+					alert(this.a+"  "+this.b);
+				}
+				square() {
+					this.a = (Math.pow(this.a,2)-Math.pow(this.b,2));
+					this.b = this.a * this.b * 2;
+					return new Complex(this.a,this.b);
+				}
+			}
+
+			function draw_point(a, b) {
+				ctx.fillStyle = "#FF00FF";
+				ctx.fillRect(a, b, 1, 1);	
+			}
+
+			function absolute_x(a) {
+				a = a + 2;
+				a = a * (width / 3);
+				a = Math.trunc(a);
+				return a;
+			}
+
+			function absolute_y(a) {
+				a = -a;
+				a++;
+				a = a * (height / 2);
+				a = Math.trunc(a);
+				return a;
+			}
+
+			for (var i = 0; i < width; i++) {
+				for (var j = 0; j < height; j++) {
+					if (isInSet(new Complex(x,y))) {
+						draw_point(absolute_x(x),absolute_y(y));
+					}
+					y += y_step;
+				}
+				x += x_step;
+				y = -1;
+			}
+			/*for (var i = 0; i < width; i++) {
+				for (var j = 0; j < height; j++) {
+						draw_point(absolute_x(x),absolute_y(y));
+						y += y_step;
+					}
+					y = -1;
+					x += x_step;
+				}*/
+				
+
+			/*if (isInSet(new Complex(0,0))) {
+				alert("beepboop");
+			}*/
+
+			function isInSet(a) {
+				var cons = new Complex(0,0);
+				for (var i = 0; i < iterations; i++) {
+					cons = cons.sum(a, cons.square());
+					if (cons.absSquare() > 4) {
+						return false;
+					}
+				}
+				return true;
+			}
+
+		</script>
+
+	</body>
+
+</html>
