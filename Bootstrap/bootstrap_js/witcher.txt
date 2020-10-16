@@ -1,0 +1,87 @@
+Witaj! Jesteśmy CD PROJEKT RED, część grupy CD PROJEKT SA, zajmujemy się produkcją gier, w tym gier z serii Wiedźmin. Włożyliśmy mnóstwo pracy w stworzenie CD PROJEKT RED, więc żeby wszystko funkcjonowało jak należy, musimy stosować pewne zasady dotyczące tego, co można, a czego nie wolno zrobić z naszymi grami i usługami. Zredagowaliśmy niniejszą Umowę w najprostszy możliwy sposób, z kilkoma nieformalnymi krótkimi podsumowaniami, które pomogą Ci zrozumieć, co ona oznacza. Jednak ważne, a co za tym idzie, prawnie wiążące, jest pełne brzmienie tekstu.
+
+TEKST PEŁNY
+
+KRÓTKIE PODSUMOWANIE
+
+1.
+
+PRZEDMIOT NINIEJSZEJ UMOWY
+
+1.1
+
+Niniejszy dokument stanowi prawnie wiążącą umowę pomiędzy Tobą a CD PROJEKT S.A. ul. Jagiellońska 74; 03-301 Warszawa, Polska (w dalszej części określamy się jako “CD PROJEKT RED”, ponieważ CD PROJEKT S.A. jest podmiotem prawnym, którego CD PROJEKT RED jest częścią) i ma ona zastosowanie do thewitcher.com, cdprojektred.com, jakichkolwiek innych stron internetowych CD PROJEKT RED, wszelkich gier CD PROJEKT RED, między innymi Wiedźmin, Wiedźmin 2: Zabójcy Królów, Wiedźmin 3: Dziki Gon, The Witcher Battle Arena lub The Witcher Adventure Game forów, wiki, blogów, kont mediów społecznościowych, kont CD PROJEKT RED, usług obsługi klienta oraz wsparcia technicznego, a także wszelkich innych świadczonych przez nas usług (łącznie zwanych w skrócie „grami oraz usługami CD PROJEKT RED”). W przypadku skorzystania przez Ciebie z jakichkolwiek gier i usług CD PROJEKT RED, umowa staje się wiążąca zarówno dla Ciebie, jak i dla nas.
+
+Uwaga: zapoznaj się również z poszczególnymi Regulaminami do gier/usług (które szczegółowo wyjaśniają zasady prawne korzystania z poszczególnych gier i usług) oraz naszą Polityką Prywatności, które stanowią część niniejszej Umowy.
+
+Nasze narzędzia do modowania dla Wiedźmina oraz REDkit dla Wiedźmin 2: Zabójcy Królów podlegają stworzonym dla nich dokumentom prawnym.
+
+Niniejsza umowa wyjaśnia istotę oraz zasady korzystania z gier i usług CD PROJEKT RED. Dla ułatwienia, umieściliśmy tutaj krótkie, nieformalne podsumowanie tego dokumentu. Jednak pamiętaj, że wersją prawnie wiążącą jest pełna wersja tekstu, która znajduje się po lewej stronie.
+
+1.2
+
+Każda gra CD PROJEKT RED ma swoje oznaczenia wiekowe, które powinieneś sprawdzić przed użyciem gry. Jeżeli nie ukończyłeś jeszcze 18 lat (lub nie osiągnąłeś jeszcze innego wieku, który określa granicę pełnoletności w Twoim kraju), przed przystąpieniem do korzystania z gier lub usług Twój rodzic lub opiekun musi zapoznać się z Umową i ją zaakceptować w Twoim imieniu (z tego względu, że w niektórych krajach osoby poniżej określonego wieku nie mogą zawierać umów, takie jak niniejsza Umowa), nawet jeżeli zgodnie z oznaczeniem wiekowym gra lub usługa jest odpowiednia dla osób niepełnoletnich.
+
+Sprawdź oznaczenia wiekowe danej gry CD PROJEKT RED, zanim w nią zagrasz. Jeżeli nie masz jeszcze 18 lat, żeby korzystać z gier i usług CD PROJEKT RED, musisz uzyskać zgodę rodzica/opiekuna, nawet jeżeli gra jest oznaczona jako odpowiednia dla osób niepełnoletnich. Jakkolwiek to brzmi, nie jest to nasz wymysł, ale wymóg prawny.
+
+2.
+
+KORZYSTANIE Z GIER I USŁUG CD PROJEKT RED
+
+2.1
+
+My (to znaczy CD PROJEKT RED) udzielamy zgody (zgodnie z prawem zwanej 'licencją') na pobieranie, instalowanie, odtwarzanie i korzystanie przez Ciebie z gier i usług CD PROJEKT RED. Licencja nie pozwala Ci na udzielenie sublicencji (więc nie możesz tej licencji przekazać następnej osobie) i nie przenosi na Ciebie żadnych praw.
+
+Dzięki udzielonej przez nas licencji, możesz korzystać z naszych gier do woli. Z punktu widzenia prawnego, gra nadal należy do nas, ale w praktyce nie ogranicza to w żaden sposób Twojej możliwości grania w nią. Zapis o udzieleniu licencji musi się w niniejszej umowie pojawić, gdyż wraz z zakupem gry nie kupujesz „kodu źródłowego gry” czy użytych w niej materiałów (np. muzyki), a jedynie prawo do ich odtwarzania.
+
+3.
+
+DOSTĘP DO WERSJI BETA CD PROJEKT RED
+
+3.1
+
+CD PROJEKT RED może wypuścić wersje ‘beta’ gier i usług zanim znajdą się one w pełnym obrocie handlowym. W takim przypadku:
+
+Twój dostęp do wersji beta zazwyczaj będzie ograniczony czasowo, może on także podlegać dodatkowym warunkom umowy;
+możemy poprosić Cię o wyrażenie opinii na temat działania wersji beta; a także
+oprogramowanie beta zostanie dostarczone w wersji ‘tak jak jest’. Istota dostępu do wersji beta polega na tym, że otrzymujesz dostęp beta do nowej wersji, akceptując fakt, że jest ona jeszcze niekompletna,
+gra lub usługa w wersji beta może posiadać własny Regulamin także prosimy o zapoznanie się z nim.
+Oferujemy dostęp beta do nowych gier i usług. Wersje beta, co wynika z ich istoty, nie są kompletne. Ale bez obaw, nie wysadzą Twojego komputera w powietrze :).
+
+4.
+
+KONTA GOG GALAXY
+
+4.1
+
+Niektóre z naszych gier lub usług mogą obejmować opcjonalne korzystanie z GOG Galaxy, usługi online stworzonej przez naszą siostrzaną spółkę GOG.com. Korzystanie z GOG Galaxy może zapewniać Ci pewne korzyści, które w przeciwnym razie byłyby niedostępne, jednak zawsze będzie ono w zupełności opcjonalne, bez zabezpieczeń DRM (bez ochrony przed kopiowaniem, kontroli on-line lub uwierzytelnień), a decyzja o jego użyciu będzie należała wyłącznie do Ciebie.
+
+Niektóre gry i usługi CD PROJEKT RED mogą oferować integrację z GOG Galaxy. Jest to zupełnie opcjonalne i pozostaje do Twojej decyzji. GOG.COM jest naszą spółką siostrzaną, więc zostajesz w dobrych rękach.
+
+4.2
+
+Jeśli zdecydujesz się na korzystanie z GOG Galaxy, będzie ono podlegało Warunkom Korzystania z GOG Galaxy, które należy przeczytać przed rozpoczęciem korzystania z usługi. Za korzystanie z usługi GOG Galaxy i pomoc użytkownikom będzie odpowiedzialne GOG.com.
+
+5.
+
+WYMAGANIA SYSTEMOWE
+
+5.1
+
+Wszystkie gry i usługi CD PROJEKT RED zawierają wyjaśnienie szczególnych wymogów systemowych niezbędnych do korzystania z nich. Upewnij się, że Twój system spełnia te wymagania! Elementy naszych gier i usług dostępne online mogą również wymagać dostępu do Internetu. Gry CD PROJEKT RED nie zawierają żadnych zabezpieczeń DRM, jednak niektórzy producenci konsol/urządzeń korzystają z technologii zabezpieczeń, nad czym nie mamy kontroli. Jeżeli dana gra lub usług wymaga dostępu do Internetu, upewnij się, że możesz zapewnić sobie stosowne środki w tym celu.
+
+Nasze gry i usługi mają jasno określone minimalne wymagania systemowe.
+
+5.2
+
+Dajesz swoją duszę, suko
+
+6.
+
+ŁATKI, AKTUALIZACJE I ZMIANY
+
+6.1
+
+Od czasu do czasu może zaistnieć potrzeba wprowadzenia przez nas tzw. łatki [ang. patch] lub aktualizacji gier lub usług CD PROJEKT RED (np. w celu dodania lub usunięcia określonych elementów). Musimy mieć możliwość ich wprowadzenia, żeby nasze gry i usługi sprawnie działały.
+
+Od czasu do czasu może zajść potrzeba wprowadzenia łatki lub update’u naszych gier lub usług.

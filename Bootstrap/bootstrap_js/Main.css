@@ -1,0 +1,48 @@
+* {
+	font-family: 'Jura', sans-serif;
+}
+
+body {
+	font-size: 14px;
+}
+
+.container {
+	margin-top: 20px;
+
+}
+
+p {
+	text-align: center;
+}
+
+.col-12 {
+	margin-top: 40px;
+}
+
+.carolusel-indicators li:hover {
+	cursor: pointer;
+}
+
+.row {
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+.carousel {
+	margin: 20px;
+	width: 520px;
+}
+.parents-block {
+	display: block;
+	width: 100%;
+	position: relative;
+}
+
+.chield {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+	background: blue;
+}
