@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+	<head>
+
+		<meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<link rel="stylesheet" href="Main.css">
+		<link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+
+	</head>
+
+
+	<body id="body">
+
+		<div class="container"> 
+
+			<nav class="navbar fixed-top navbar-light bg-light">
+			  <a class="navbar-brand" href="#">Сайт Георга Лаабе</a>
+			</nav>
+
+			<div class="row">
+				<div class="col-12">
+
+					<p class="display-4"> Делать сайты </p>
+					<p class="display-4"> это круто! </p>
+
+					<div class="alert alert-primary" role="alert">
+					  Кстати, у меня есть и другой <a href="http://vtkatnoke.xyz/" class="alert-link">крутой сайт</a>!
+					</div>
+
+					<h2> Playstation 5 Cyber <span class="badge badge-secondary">Новинка</span></h2>
+
+					<img id="scale" src="ps5.jpg">
+
+					<h2> Но это еще не все! </h2>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-mx-6">
+
+					<div class="card">
+					  <img src="xbox.png" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Xbox</h5>
+					    <p class="card-text">Революционная консоль!</p>
+					    <a href="#" class="btn btn-primary">Купить за 519.99$</a>
+					  </div>
+					</div>
+
+				</div>
+
+				<div class="col-mx-6">
+
+					<div class="card">
+					  <img src="Dance1.jpg" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Потанцуй</h5>
+					    <p class="card-text">Дебютный альбом!</p>
+					    <a href="#" class="btn btn-primary">Купить за 0.00$</a>
+					  </div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+
+					<h2> Панель бога! </h2>
+
+					<div class="btn-group" role="group" aria-label="Basic example">
+					  <button type="button" class="btn btn-secondary" onclick="deleteAll()">Удалить все</button>
+					  <button type="button" class="btn btn-secondary" onclick="badBack()">Пурпурный фон</button>
+					  <button type="button" class="btn btn-secondary" onclick="normBack()">Нормальный фон</button>
+					  <div class="dropdown">
+					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Еще фоны!
+					  </button>
+					    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						    <a class="dropdown-item" onclick="greenBack()">Зеленый фон</a>
+						    <a class="dropdown-item" onclick="redBack()">Красный фон</a>
+						    <a class="dropdown-item" onclick="yellowBack()">Желтый фон</a>
+					  	</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+
+					<h4> Я уверен, когда-нибудь они заполнятся! </h4>
+
+					<div class="progress">
+					  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+					</div>	
+					<div class="progress">
+					  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+					</div>	
+					<div class="progress">
+					  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+					</div>	
+					<div class="progress">
+					  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+					</div>	
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+
+		function deleteAll() {
+			document.getElementById('html').innerHTML = "";
+		}
+
+		function normBack() {
+			document.getElementById('body').style = "background-color: #ffffff;";
+		}
+
+		function badBack() {
+			document.getElementById('body').style = "background-color: #ff00ff;";
+		}
+
+		function greenBack() {
+			document.getElementById('body').style = "background-color: #25ff12;";
+		}
+
+		function redBack() {
+			document.getElementById('body').style = "background-color: #ff2712;";
+		}
+
+		function yellowBack() {
+			document.getElementById('body').style = "background-color: #ffde12;";
+		}
+
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+
+
+	</script>
+
+</html>
