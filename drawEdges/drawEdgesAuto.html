@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Cool Draw! </title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				font-family: arial;
+			}
+
+			body {
+				background-color: #131313;
+			}
+
+			#canv {
+				margin-top: 20px;
+			}
+
+			p {
+				color: white;
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+		<canvas id="canv" width="900" height="600"></canvas><br><br>
+
+	</body>
+
+	<script>
+
+		var canvas = document.getElementById("canv");
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "000000";
+		ctx.fillRect(0, 0, 900, 600);
+
+		var edges = 5;
+		var angle = 180 - 360/2/edges;
+
+		var start_x = 425;
+		var start_y = 225;
+
+		var vect_x = 0;
+		var vect_y = 175;
+
+		var colors = ['red', 'green', 'magenta', 'cyan', 'yellow', 'blue', 'brown'];
+		var sizes = [2,3,4,5];
+
+		ctx.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
+		ctx.lineWidth = sizes[Math.floor(Math.random() * sizes.length)];
+
+		function toRad(angle) {
+			return angle*(Math.PI/180);
+		}
+
+		function drawPolygon() {	 
+			var temp_x;
+			var temp_y;
+			for(var i = 0; i < edges; i++) {
+				angle = 180 - 360/2/edges;
+				drawLine(start_x, start_y, start_x+vect_x, start_y+vect_y);
+				start_x = start_x + vect_x;
+				start_y = start_y + vect_y;
+				temp_x = Math.cos(toRad(angle))*vect_x + Math.sin(toRad(angle))*vect_y;
+				temp_y = -Math.sin(toRad(angle))*vect_x + Math.cos(toRad(angle))*vect_y;
+				vect_x = temp_x
+				vect_y = temp_y
+			}
+		}
+
+		function drawLine(x1,y1,x2,y2) {
+		    ctx.beginPath();
+		    ctx.moveTo(x1, y1);
+		    ctx.lineTo(x2, y2);
+		    ctx.stroke();
+		}
+
+		function filling() {
+			for(var j = 0; j < 1; j++) {
+				ctx.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
+				ctx.lineWidth = sizes[Math.floor(Math.random() * sizes.length)];
+				edges = Math.floor(Math.random()*10+1)*2+1;
+				angle = 180 - 360/2/edges;
+				start_x = Math.random() * (900 - 0) + 0;
+				start_y = Math.random() * (600 - 0) + 0;
+				vect_x = Math.floor(Math.random()*50+50);
+				vect_y = Math.floor(Math.random()*50+50);
+				drawPolygon();
+			}
+		}
+
+		var int = setInterval(filling, 300)
+
+	</script>
+
+</html>
